@@ -4,18 +4,10 @@
         "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<constant name="struts.i18n.encoding" value="UTF-8"/>
-
-	<!--
-		注意：若采用注解方式,在action的类上必须配置@PackageParent注解,
-		普通action需要定义为@PackageParent("default"),
-		返回json对象的action需要定义为@PackageParent("json-interceptor")
-	-->
-
-	<package name="example" extends="struts-default">
-		<action name="hello" class="HelloAction">
-			<result name="success">/index.jsp</result>
-		</action>
-	</package>
-
-
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 表示Action由Spring来进行创建，可以直接使用Spring依赖注入来注入  
+     <constant
+		name="struts.objectFactory"
+		value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+-->
 </struts>
