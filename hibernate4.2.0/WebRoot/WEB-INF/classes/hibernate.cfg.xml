@@ -8,10 +8,10 @@
 	
 		<!-- SQL dialect -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hebernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3305/hibernate</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test</property>
         <property name="connection.username">root</property>
-        <property name="connection.password">640310</property>
+        <property name="connection.password">root</property>
         
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
