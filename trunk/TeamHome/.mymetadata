@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="TeamHome"
+  id="myeclipse.1363013314781"
+  context-root="/TeamHome"
+  j2ee-spec="5.0"
+  archive="TeamHome.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
