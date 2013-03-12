@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0;
+	padding:0;
+}
+nav {
+    position: absolute;
+    top: -50px;
+    height: 50px;
+    width: 100%;
+    background: #ff4401;
+}
+nav li {
+    float: left;
+    margin-right: 10px;
+    list-style: none;
+}
+header{
+    width: 100%;
+    text-align: right;
+    margin-bottom: 10px;
+}
+footer{
+    margin-top: 10px;
+}
+#content{
+    width: 100%;
+}
+#title h1{
+    text-align: center;
+}
+#other{
+    margin-top: 10px;
+}
