@@ -22,19 +22,9 @@
 		<property name="url" value="jdbc:mysql://localhost:3306/test"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="root"></property>
-		<!-- 配置连接池的初始值 -->
-		<property name="initialSize" value="1" />
-		<!-- 连接池的最大值 -->
-		<!-- <property name="maxActive" value="500"/> -->
-		<!-- 最大空闲时，当经过一个高峰之后，连接池可以将一些用不到的连接释放，一直减少到maxIdle为止 -->
-		<!-- <property name="maxIdle" value="2"/> -->
-		<!-- 当最小空闲时，当连接少于minIdle时会自动去申请一些连接 -->
-		<property name="minIdle" value="1" />
-		<property name="maxActive" value="100" />
-		<property name="maxIdle" value="20" />
-		<property name="maxWait" value="1000" />
 	</bean>
-
+<!-- 导入Src目录下的jdbc.properties文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
 	<!--hibernate sessionFactory 创建 -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
@@ -60,7 +50,6 @@
 		<property name="sessionFactory" ref="sessionFactory">
 		
 		</property>
-	
 	
 	</bean>
 	
