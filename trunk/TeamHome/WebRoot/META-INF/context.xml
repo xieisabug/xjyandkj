@@ -1,0 +1,6 @@
+<Context>
+	<Resource name="jdbc/mysql" auth="Container" type="javax.sql.DataSource"
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/teamhome?useUnicode=true&amp;characterEncoding=utf-8"
+		username="root" password="640310" maxActive="5" maxIdle="3" maxWait="-1" />
+</Context>

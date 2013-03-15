@@ -1,4 +1,4 @@
-package com.teamhome.action.menu;
+package com.teamhome.action;
 
 import org.junit.Before;
 import org.junit.Test;
