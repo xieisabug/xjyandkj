@@ -23,27 +23,21 @@ public class TestLoginDao {
 	}
 	
 	@Test
-	public void testLogout(){
-		fail();
-	}
-	
-	@Test
 	public void testSQLLogin(){
-		fail();
+		Admin a = login.login("(1=1)", "(1=1)");
+		assertNull("用户SQL注入成功！",a);
 	}
 	
 	@Test
 	public void testNoUsernameLogin(){
-		fail();
+		Admin a = login.login("aaaa", "aaaaa");
+		assertNull("无效用户登陆成功！",a);
 	}
 	
 	@Test
 	public void testNoPasswordLogin(){
-		fail();
+		Admin a = login.login("xjy..xjy", "");
+		assertNull("无密码登陆成功！",a);
 	}
 	
-	@Test
-	public void testNotLogin(){
-		fail();
-	}
 }
