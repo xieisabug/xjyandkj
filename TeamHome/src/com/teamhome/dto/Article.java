@@ -28,6 +28,13 @@ public class Article {
 		this.authorName = authorName;
 	}
 	
+	@Override
+	public String toString() {
+		return "Article [id=" + id + ", title=" + title + ", content="
+				+ content + ", date=" + date + ", authorName=" + authorName
+				+ "]";
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -22,6 +22,12 @@ public class Menu {
 		this.link = link;
 	}
 	
+	@Override
+	public String toString() {
+		return "Menu [id=" + id + ", code=" + code + ", name=" + name
+				+ ", link=" + link + "]";
+	}
+
 	public int getId() {
 		return id;
 	}
