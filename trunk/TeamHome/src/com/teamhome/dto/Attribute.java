@@ -43,4 +43,10 @@ public class Attribute {
 		this.value = value;
 	}
 
+	@Override
+	public String toString() {
+		return "Attribute [id=" + id + ", name=" + name + ", value=" + value
+				+ "]";
+	}
+
 }

@@ -6,34 +6,31 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
-import com.teamhome.dto.Menu;
+import com.teamhome.dto.Message;
 import com.teamhome.testdb.DBUtil;
 
-public class MenuDao {
+public class MessageDao {
 
-	/**
-	 * 增加一个菜单
-	 * @param m 增加的菜单
-	 * @return 返回增加的菜单的id
-	 */
-	public int add(Menu m) {
-		String addSql = "insert into menu(code,name,link) value(?,?,?)";
+	public int add(Message m) {
+		String insertSql = "insert into Message(content,contact) value(?,?)";
 		Connection con = DBUtil.getConnection();
-		PreparedStatement pre = DBUtil.prepare(con, addSql);
+		PreparedStatement pre = DBUtil.prepare(con, insertSql);
 		Connection con2 = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
-			pre.setString(1, m.getCode());
-			pre.setString(2, m.getName());
-			pre.setString(3, m.getLink());
+			pre.setString(1, m.getContent());
+			pre.setString(2, m.getContact());
+			// util的Date转sql的Date
+			// 只需调用sql的 new Date(d.getTime())
 			boolean success = pre.execute();
 			if (!success) {
 				DBUtil.close(con, pre);
-				String getIdSql = "select id from menu where code='"
-						+ m.getCode() + "' and name='" + m.getName()
-						+ "' and link='" + m.getLink() + "' ";
+				String getIdSql = "select id from Message where content='"
+						+ m.getContent() + "' and contact='" + m.getContact()
+						+ "'";
 				con2 = DBUtil.getConnection();
 				stmt = DBUtil.getStatement(con2);
 				rs = stmt.executeQuery(getIdSql);
@@ -49,24 +46,18 @@ public class MenuDao {
 		return 0;
 	}
 
-	/**
-	 * 获取一个菜单
-	 * @param id 获取菜单的id
-	 * @return 返回获取到的菜单实体
-	 */
-	public Menu get(int id) {
-		String sql = "select * from Menu where id = " + id;
-		Menu m = null;
+	public Message get(int id) {
+		String sql = "select * from Message where id = " + id;
+		Message m = null;
 		Connection con = DBUtil.getConnection();
 		Statement stmt = DBUtil.getStatement(con);
 		ResultSet rs = null;
 		try {
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				String code = rs.getString("code");
-				String name = rs.getString("name");
-				String link = rs.getString("link");
-				m = new Menu(code, name, link);
+				String content = rs.getString("content");
+				String contact = rs.getString("contact");
+				m = new Message(content,contact);
 				m.setId(id);
 			}
 		} catch (SQLException e) {
@@ -77,21 +68,14 @@ public class MenuDao {
 		return m;
 	}
 
-	/**
-	 * 更新一个菜单
-	 * @param id 需要更新的菜单的id
-	 * @param afterM 更新菜单的属性
-	 * @return 返回更新是否成功
-	 */
-	public boolean update(int id, Menu afterM) {
-		String updateSql = "update Menu set code=?,name=?,link=? where id=?";
+	public boolean update(int id, Message afterM) {
+		String updateSql = "update Message set content=?,contact=? where id=?";
 		Connection con = DBUtil.getConnection();
 		PreparedStatement pre = DBUtil.prepare(con, updateSql);
 		try {
-			pre.setString(1, afterM.getCode());
-			pre.setString(2, afterM.getName());
-			pre.setString(3, afterM.getLink());
-			pre.setInt(4, id);
+			pre.setString(1, afterM.getContent());
+			pre.setString(2, afterM.getContact());
+			pre.setInt(3, id);
 			int num = pre.executeUpdate();
 			if (num == 1) {
 				return true;
@@ -104,13 +88,8 @@ public class MenuDao {
 		return false;
 	}
 
-	/**
-	 * 删除一个菜单
-	 * @param id 删除的菜单的id
-	 * @return 返回删除是否成功
-	 */
 	public boolean delete(int id) {
-		String deleteSql = "delete from Menu where id = ?";
+		String deleteSql = "delete from Message where id = ?";
 		Connection con = DBUtil.getConnection();
 		PreparedStatement pre = DBUtil.prepare(con, deleteSql);
 		try {
@@ -126,24 +105,22 @@ public class MenuDao {
 		return false;
 	}
 
-	/**
-	 * 加载所有的菜单
-	 * @return 返回加载到的菜单list
-	 */
-	public ArrayList<Menu> load() {
-		ArrayList<Menu> list = new ArrayList<Menu>();
-		String loadSql = "select * from Menu order by code";
+	public List<Message> list(int from, int to) {
+		ArrayList<Message> list = new ArrayList<Message>();
+		int num = to - from + 1;
+		String listSql = "select * from Message limit ?,?";
 		Connection con = DBUtil.getConnection();
-		Statement stmt = DBUtil.getStatement(con);
+		PreparedStatement pre = DBUtil.prepare(con, listSql);
 		ResultSet rs = null;
 		try {
-			rs = stmt.executeQuery(loadSql);
+			pre.setInt(1, from-1);
+			pre.setInt(2, num);
+			rs = pre.executeQuery();
 			while(rs.next()){
 				int id = rs.getInt("id");
-				String code = rs.getString("code");
-				String name = rs.getString("name");
-				String link = rs.getString("link");
-				Menu m = new Menu(code, name, link);
+				String content = rs.getString("content");
+				String contact = rs.getString("contact");
+				Message m = new Message(content, contact);
 				m.setId(id);
 				list.add(m);
 			}
@@ -151,9 +128,9 @@ public class MenuDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.close(con, stmt, rs);
+			DBUtil.close(con, pre, rs);
 		}
 		return null;
 	}
-
+	
 }

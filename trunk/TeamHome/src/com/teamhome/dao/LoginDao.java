@@ -30,6 +30,8 @@ public class LoginDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			DBUtil.close(con, pre, rs);
 		}
 		return null;
 	}

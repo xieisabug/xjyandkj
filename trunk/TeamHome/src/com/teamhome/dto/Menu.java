@@ -12,7 +12,7 @@ public class Menu {
 	private String code;
 	//菜单名
 	private String name;
-	//菜单链接
+	//菜单链接,用|分割，前面是图标链接，后面是跳转链接
 	private String link;
 	
 	public Menu(String code, String name, String link) {
