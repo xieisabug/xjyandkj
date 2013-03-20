@@ -6,6 +6,7 @@ package com.teamhome.dto;
  * @author Administrator
  */
 public class Message {
+	
 	//id
 	private int id;
 	//留言内容
@@ -13,6 +14,10 @@ public class Message {
 	//联系方式，可填可不填，填写的时候可以有多个，用空格隔开
 	private String contact;
 	
+	public Message() {
+		super();
+	}
+
 	public Message(String content, String contact) {
 		this.content = content;
 		this.contact = contact;
@@ -36,6 +41,10 @@ public class Message {
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Message [id=" + id + ", content=" + content + ", contact="
+				+ contact + "]";
+	}
 }

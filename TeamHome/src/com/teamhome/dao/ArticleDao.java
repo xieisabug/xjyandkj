@@ -82,7 +82,6 @@ public class ArticleDao {
 		} finally {
 			DBUtil.close(con, pre);
 		}
-
 		return false;
 	}
 
@@ -98,8 +97,9 @@ public class ArticleDao {
 		Article a = null;
 		Connection con = DBUtil.getConnection();
 		Statement stmt = DBUtil.getStatement(con);
+		ResultSet rs = null;
 		try {
-			ResultSet rs = stmt.executeQuery(sql);
+			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				String title = rs.getString("title");
 				String content = rs.getString("content");
@@ -110,6 +110,8 @@ public class ArticleDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			DBUtil.close(con, stmt, rs);
 		}
 		return a;
 	}
@@ -190,7 +192,7 @@ public class ArticleDao {
 		PreparedStatement pre = DBUtil.prepare(con, listSql);
 		ResultSet rs = null;
 		try {
-			pre.setInt(1, from);
+			pre.setInt(1, from-1);
 			pre.setInt(2, num);
 			rs = pre.executeQuery();
 			while(rs.next()){
