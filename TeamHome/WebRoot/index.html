@@ -3,11 +3,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>咿呀咿呀小团队</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/index.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
-<header>
+<header class="header">
     <div>页头</div>
 </header>
 <nav id="navigation">
@@ -19,35 +20,42 @@
     </ul>
 </nav>
 <div id="content">
-    <div id="title">
-        <h1>某些标题</h1>
-        <div id="summary">
+    <div class="container">
+        <div id="title">
+            <h1>下一件我们要做的事，永远也猜不到</h1>
+            <h4>生活就得创新，生活就是奋斗，生活就要激情</h4>
 
+            <div id="summary">
+                <div class="input-append">
+                <input type="text" value="" placeholder="留下你的心里话吧" class="span7">
+                <a href="#" class="btn btn-success">卖个萌吧</a>
+                </div>
+            </div>
+        </div>
+        <div id="item" class="raw">
+            <div class="span4">
+                <div class="goodItem_title">好处1</div>
+                <div class="goodItem_icon">图标</div>
+                <div class="goodItem_content">内容内容</div>
+            </div>
+            <div class="span4">
+                <div class="goodItem_title">好处1</div>
+                <div class="goodItem_icon">图标</div>
+                <div class="goodItem_content">内容内容</div>
+            </div>
+            <div class="span4">
+                <div class="goodItem_title">好处1</div>
+                <div class="goodItem_icon">图标</div>
+                <div class="goodItem_content">内容内容</div>
+            </div>
+        </div>
+        <div id="other">
+            <div>一些其他东西</div>
         </div>
     </div>
-    <div id="goodItem">
-        <ul>
-            <li>
-                <div class="goodItem_title">好处1</div>
-                <div class="goodItem_icon">图标</div>
-                <div class="goodItem_content">内容内容</div>
-            </li>
-            <li>
-                <div class="goodItem_title">好处1</div>
-                <div class="goodItem_icon">图标</div>
-                <div class="goodItem_content">内容内容</div>
-            </li>
-            <li>
-                <div class="goodItem_title">好处1</div>
-                <div class="goodItem_icon">图标</div>
-                <div class="goodItem_content">内容内容</div>
-            </li>
-        </ul>
-    </div>
-    <div id="other">
-        <div>一些其他东西</div>
-    </div>
 </div>
-<footer>页脚</footer>
+<footer class="footer">页脚</footer>
 </body>
+<script type="text/javascript" src="js/util/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </html>
