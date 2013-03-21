@@ -1,8 +1,6 @@
 @charset "utf-8";
-/* CSS Document */
-*{
-	margin:0;
-	padding:0;
+body,html {
+    width: 100%;
 }
 nav {
     position: absolute;
@@ -16,20 +14,16 @@ nav li {
     margin-right: 10px;
     list-style: none;
 }
-header{
-    width: 100%;
-    text-align: right;
-    margin-bottom: 10px;
-}
-footer{
-    margin-top: 10px;
+.raw{
+    margin-left: -20px;
 }
 #content{
     width: 100%;
 }
-#title h1{
+#summary{
     text-align: center;
 }
-#other{
-    margin-top: 10px;
+#title h1,#title h4{
+    text-align: center;
+    font-family: Yahei,'微软雅黑',Arial,sans-serif;
 }
