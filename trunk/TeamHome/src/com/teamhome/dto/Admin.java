@@ -15,6 +15,9 @@ public class Admin {
 	//密码
 	private String password;
 	
+	public Admin() {
+		super();
+	}
 	//带username和password的构造函数
 	public Admin(String username, String password) {
 		this.username = username;

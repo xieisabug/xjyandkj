@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body {
+    height: 100%;
+    width: 100%;
+}
+.container,.row-fluid {
+    height: 100%;
+}
+#menu {
+    height: 100%;
+}
+#menu ul {
+    margin-top: 50px;
+}
+#menu li{
+    padding: 5px;
+}
+#menu li span {
+    margin-right: 10px;
+}
+#content {
+    height: 100%;
+}
