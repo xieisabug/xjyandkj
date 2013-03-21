@@ -15,6 +15,10 @@ public class Menu {
 	//菜单链接,用|分割，前面是图标链接，后面是跳转链接
 	private String link;
 	
+	public Menu() {
+		super();
+	}
+	
 	public Menu(String code, String name, String link) {
 		super();
 		this.code = code;

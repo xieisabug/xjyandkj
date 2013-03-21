@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>后台管理</title>
+    <!-- Loading Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/admin.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row-fluid">
+        <div class="span3 well" id="menu">
+            <ul class="nav nav-list">
+                <li class="active">
+                    <a href="javascript:createTab('admin_count.html','admin_count.js')">
+                        <span class="icon-list-alt"></span>
+                        统计
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:createTab('admin_message.html','admin_message.js')">
+                        <span class="icon-edit"></span>
+                        留言管理
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:createTab('admin_article.html','admin_article.js')">
+                        <span class="icon-book"></span>
+                        文章管理
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:createTab('admin_page.html','admin_page.js')">
+                        <span class="icon-file"></span>
+                        页面管理
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:createTab('admin_attribute.html','admin_attribute.js')">
+                        <span class="icon-cog"></span>
+                        参数管理
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:createTab('admin_menu.html','admin_menu.js')">
+                        <span class="icon-th"></span>
+                        菜单管理
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="span9 well" id="content">
+
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="js/util/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/util/Log.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+</html>
