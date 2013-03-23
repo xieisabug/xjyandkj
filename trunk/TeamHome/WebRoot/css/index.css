@@ -2,15 +2,19 @@
 body,html {
     width: 100%;
 }
-nav {
+header,#header{
+	height: 50px;
+	background-color:#000;
+	color:#fff;
+}
+nav,#menu {
     position: absolute;
-    top: -50px;
-    height: 50px;
-    width: 100%;
+	left:-50px;
+    height: 100%;
+    width: 50px;
     background: #ff4401;
 }
-nav li {
-    float: left;
+#menu li {
     margin-right: 10px;
     list-style: none;
 }
@@ -20,10 +24,29 @@ nav li {
 #content{
     width: 100%;
 }
-#summary{
-    text-align: center;
+#title{
+	margin-top:140px;
 }
 #title h1,#title h4{
     text-align: center;
     font-family: Yahei,'微软雅黑',Arial,sans-serif;
+	margin-top:25px;
+}
+#summary{
+    text-align: center;
+	margin-top: 100px;
+}
+#item {
+	margin-top: 80px;
+}
+#other {
+	
+}
+footer,#footer {
+	height:50px;
+	width:100%;
+	position:absolute;
+	bottom:0px;;
+	background-color:#000;
+	color:#fff;
 }
