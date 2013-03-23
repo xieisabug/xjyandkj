@@ -6,8 +6,20 @@
 <body>
 <ul class="nav nav-tabs" id="menu-tab">
     <li class="active"><a href="#look_menu">菜单管理</a></li>
+    <li><a href="#add_menu">增加菜单</a></li>
 </ul>
 <div class="tab-content">
+    <div id="menu_dialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">菜单属性</h3>
+        </div>
+        <div id="menu_dialog_body" class="modal-body">
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+        </div>
+    </div>
     <div class="tab-pane active" id="look_menu">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -18,34 +30,11 @@
                 <th class="span2">操作</th>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>01</td>
-                    <td>呵呵</td>
-                    <td>#</td>
-                    <td>
-                        <a href="#" class="btn btn-small">查看</a>
-                        <a href="#" class="btn btn-small">删除</a>
-                        <a href="#" class="btn btn-small">修改</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>02</td>
-                    <td>哈哈...</td>
-                    <td>#</td>
-                    <td>
-                        <a href="#" class="btn btn-small">查看</a>
-                        <a href="#" class="btn btn-small">删除</a>
-                        <a href="#" class="btn btn-small">修改</a>
-                    </td>
-                </tr>
+
             </tbody>
         </table>
-        <ul class="pager">
-            <li><a href="#">Previous</a></li>
-            <li><a href="#">Next</a></li>
-        </ul>
+    </div>
+    <div class="tab-pane" id="add_menu">
     </div>
 </div>
 </body>
