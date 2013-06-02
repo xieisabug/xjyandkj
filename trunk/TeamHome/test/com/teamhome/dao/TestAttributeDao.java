@@ -1,7 +1,11 @@
 package com.teamhome.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.junit.After;
@@ -69,13 +73,22 @@ public class TestAttributeDao {
 	
 	@Test
 	public void testList(){
-		System.out.println("读取第2到4条记录");
-		List<Attribute> list = dao.list(2,4);
+		System.out.println("读取所有记录");
+		List<Attribute> list = dao.list();
 		assertEquals("获取参数列表错误！", list.size(), 3);
 		System.out.println("读取参数成功,读取的参数分别是：");
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i).toString());
 		}
+	}
+	
+	@Test
+	public void testMap(){
+		System.out.println("获取所有记录，并记录到Map中");
+		HashMap<String, String> map = dao.map();
+		assertNotEquals(map.size(), 0);
+		System.out.println("读取记录成功，参数为：");
+		System.out.println(map.toString());
 	}
 	
 }

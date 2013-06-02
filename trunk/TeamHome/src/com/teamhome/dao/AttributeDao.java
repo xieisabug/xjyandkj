@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 import com.teamhome.dto.Attribute;
 import com.teamhome.testdb.DBUtil;
@@ -105,17 +105,14 @@ public class AttributeDao {
 		return false;
 	}
 
-	public List<Attribute> list(int from, int to) {
+	public ArrayList<Attribute> list() {
 		ArrayList<Attribute> list = new ArrayList<Attribute>();
-		int num = to - from + 1;
-		String listSql = "select * from Attribute limit ?,?";
+		String listSql = "select * from Attribute";
 		Connection con = DBUtil.getConnection();
-		PreparedStatement pre = DBUtil.prepare(con, listSql);
+		Statement stmt = DBUtil.getStatement(con);
 		ResultSet rs = null;
 		try {
-			pre.setInt(1, from-1);
-			pre.setInt(2, num);
-			rs = pre.executeQuery();
+			rs = stmt.executeQuery(listSql);
 			while(rs.next()){
 				int id = rs.getInt("id");
 				String name = rs.getString("name");
@@ -128,9 +125,31 @@ public class AttributeDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.close(con, pre, rs);
+			DBUtil.close(con, stmt, rs);
 		}
 		return null;
+	}
+	
+	public HashMap<String,String> map(){
+		HashMap<String,String> map = new HashMap<String, String>();
+		String listSql = "select * from Attribute";
+		Connection con = DBUtil.getConnection();
+		Statement stmt = DBUtil.getStatement(con);
+		ResultSet rs = null;
+		try {
+			rs = stmt.executeQuery(listSql);
+			while(rs.next()){
+				String name = rs.getString("name");
+				String value = rs.getString("value");
+				map.put(name, value);
+			}
+			return map;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(con, stmt, rs);
+		}
+		return map;
 	}
 	
 }
