@@ -5,20 +5,38 @@
 </head>
 <body>
 <ul class="nav nav-tabs" id="page-tab">
-    <li class="active"><a href="#page_article">页面文章管理</a></li>
+    <li class="active"><a href="#index_css">主页样式管理</a></li>
+    <li><a href="#index_html">页面文章管理</a></li>
     <li><a href="#page_content">页面内容管理</a></li>
-    <li><a href="#page_css">页面样式管理</a></li>
+
 </ul>
 <div class="tab-content">
-    <div class="tab-pane active" id="page_article">
-        页面显示的文章等控制
+    <div class="tab-pane active" id="index_css">
+        <form>
+            <div class="control-group">
+                <label class="control-label" for="indexCss">index.css :</label>
+                <div class="controls">
+                    <textarea id="indexCss" rows="18" class="input-block-level"></textarea>
+                </div>
+            </div>
+            <a class="btn btn-large" href="javascript:changeIndexCss()">提交</a>
+        </form>
+    </div>
+    <div class="tab-pane" id="index_html">
+        <form>
+            <div class="control-group">
+                <label class="control-label" for="indexHtml">index.html :</label>
+                <div class="controls">
+                    <textarea id="indexHtml" rows="18" class="input-block-level"></textarea>
+                </div>
+            </div>
+            <a class="btn btn-large" href="javascript:changeIndexHtml()">提交</a>
+        </form>
     </div>
     <div class="tab-pane" id="page_content">
         页面显示的文字，内容，标签等控制
     </div>
-    <div class="tab-pane" id="page_css">
-        页面的css文件设置
-    </div>
+
 </div>
 </body>
 </html>

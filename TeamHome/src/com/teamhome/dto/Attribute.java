@@ -13,6 +13,10 @@ public class Attribute {
 	//参数的值
 	private String value;
 	
+	public Attribute() {
+		super();
+	}
+	
 	public Attribute(String name, String value) {
 		super();
 		this.name = name;

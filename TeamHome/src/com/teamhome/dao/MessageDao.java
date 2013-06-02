@@ -30,7 +30,7 @@ public class MessageDao {
 				DBUtil.close(con, pre);
 				String getIdSql = "select id from Message where content='"
 						+ m.getContent() + "' and contact='" + m.getContact()
-						+ "'";
+						+ "' order by id desc";
 				con2 = DBUtil.getConnection();
 				stmt = DBUtil.getStatement(con2);
 				rs = stmt.executeQuery(getIdSql);
@@ -131,6 +131,107 @@ public class MessageDao {
 			DBUtil.close(con, pre, rs);
 		}
 		return null;
+	}
+
+	public int starMessage(int id) {
+		String insertSql = "insert into Star_Message(content,contact) value(?,?)";
+		Message m = this.get(id);
+		Connection con = DBUtil.getConnection();
+		PreparedStatement pre = DBUtil.prepare(con, insertSql);
+		Connection con2 = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			pre.setString(1, m.getContent());
+			pre.setString(2, m.getContact());
+			// util的Date转sql的Date
+			// 只需调用sql的 new Date(d.getTime())
+			boolean success = pre.execute();
+			if (!success) {
+				DBUtil.close(con, pre);
+				String getIdSql = "select id from Star_Message where content='"
+						+ m.getContent() + "' and contact='" + m.getContact()
+						+ "'";
+				con2 = DBUtil.getConnection();
+				stmt = DBUtil.getStatement(con2);
+				rs = stmt.executeQuery(getIdSql);
+				if (rs.next()) {
+					return rs.getInt(1);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(con2, stmt, rs);
+		}
+		return 0;
+	}
+
+	public Message getStarMessage(int sId) {
+		String sql = "select * from Star_Message where id = " + sId;
+		Message m = null;
+		Connection con = DBUtil.getConnection();
+		Statement stmt = DBUtil.getStatement(con);
+		ResultSet rs = null;
+		try {
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				String content = rs.getString("content");
+				String contact = rs.getString("contact");
+				m = new Message(content,contact);
+				m.setId(sId);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(con, stmt, rs);
+		}
+		return m;
+	}
+
+	public ArrayList<Message> listStarMessage(int from, int to) {
+		ArrayList<Message> list = new ArrayList<Message>();
+		int num = to - from + 1;
+		String listSql = "select * from Star_Message limit ?,?";
+		Connection con = DBUtil.getConnection();
+		PreparedStatement pre = DBUtil.prepare(con, listSql);
+		ResultSet rs = null;
+		try {
+			pre.setInt(1, from-1);
+			pre.setInt(2, num);
+			rs = pre.executeQuery();
+			while(rs.next()){
+				int id = rs.getInt("id");
+				String content = rs.getString("content");
+				String contact = rs.getString("contact");
+				Message m = new Message(content, contact);
+				m.setId(id);
+				list.add(m);
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(con, pre, rs);
+		}
+		return null;
+	}
+
+	public boolean deleteStarMessage(int sId) {
+		String deleteSql = "delete from Star_Message where id = ?";
+		Connection con = DBUtil.getConnection();
+		PreparedStatement pre = DBUtil.prepare(con, deleteSql);
+		try {
+			pre.setInt(1, sId);
+			pre.execute();
+			boolean success = pre.getUpdateCount()==1?true:false;
+			return success;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(con, pre);
+		}
+		return false;		
 	}
 	
 }

@@ -20,6 +20,30 @@
             <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
         </div>
     </div>
+    <div id="menu_msg" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>修改菜单</h3>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:msg_close();" class="btn">关闭</a>
+        </div>
+    </div>
+    <div id="menu_delete" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>删除菜单</h3>
+        </div>
+        <div class="modal-body">
+            <p>您确定删除这个菜单么？</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-danger">确定删除</a>
+            <a href="javascript:$('#menu_delete').modal('hide');" class="btn">取消</a>
+        </div>
+    </div>
     <div class="tab-pane active" id="look_menu">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -35,6 +59,34 @@
         </table>
     </div>
     <div class="tab-pane" id="add_menu">
+        <form class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="code">Code</label>
+                <div class="controls">
+                    <input type="text" id="code" placeholder="请输入code">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="name">名称</label>
+                <div class="controls">
+                    <input type="text" id="name" placeholder="请输入名称">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="link">链接</label>
+                <div class="controls">
+                    <input type="text" id="link" placeholder="请输入链接">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <a href="javascript:add_menu();" class="btn">提交</a>
+                    <a href="javascript:reset();" class="btn">重置</a>
+                </div>
+            </div>
+        </form>
+        <div class="alert hide fade in">
+        </div>
     </div>
 </div>
 </body>

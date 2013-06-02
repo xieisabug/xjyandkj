@@ -5,10 +5,46 @@
 </head>
 <body>
 <ul class="nav nav-tabs" id="attribute-tab">
-    <li class="active"><a href="#attribute">参数管理</a></li>
+    <li class="active"><a href="#attr_manage">参数管理</a></li>
+    <li><a href="#add_attr">增加参数</a></li>
 </ul>
 <div class="tab-content">
-    <div class="tab-pane active" id="attribute">
+    <div id="attr_dialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">参数属性</h3>
+        </div>
+        <div id="attr_dialog_body" class="modal-body">
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+        </div>
+    </div>
+    <div id="attr_msg" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>修改参数</h3>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:msg_close();" class="btn">关闭</a>
+        </div>
+    </div>
+    <div id="attr_delete" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>删除参数</h3>
+        </div>
+        <div class="modal-body">
+            <p>您确定删除这个参数么？</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-danger">确定删除</a>
+            <a href="javascript:$('#attr_delete').modal('hide');" class="btn">取消</a>
+        </div>
+    </div>
+    <div class="tab-pane active" id="attr_manage">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <th class="span1">id</th>
@@ -17,32 +53,32 @@
                 <th class="span2">操作</th>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>xjy</td>
-                    <td>xjy</td>
-                    <td>
-                        <a href="#" class="btn btn-small">查看</a>
-                        <a href="#" class="btn btn-small">删除</a>
-                        <a href="#" class="btn btn-small">修改</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>MaxUser</td>
-                    <td>3</td>
-                    <td>
-                        <a href="#" class="btn btn-small">查看</a>
-                        <a href="#" class="btn btn-small">删除</a>
-                        <a href="#" class="btn btn-small">修改</a>
-                    </td>
-                </tr>
             </tbody>
         </table>
-        <ul class="pager">
-            <li><a href="#">Previous</a></li>
-            <li><a href="#">Next</a></li>
-        </ul>
+    </div>
+    <div class="tab-pane" id="add_attr">
+        <form class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="name">名称</label>
+                <div class="controls">
+                    <input type="text" id="name" placeholder="请输入名称">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="value">值</label>
+                <div class="controls">
+                    <input type="text" id="value" placeholder="请输入值">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <a href="javascript:add_attr();" class="btn">提交</a>
+                    <a href="javascript:reset();" class="btn">重置</a>
+                </div>
+            </div>
+        </form>
+        <div class="alert hide fade in">
+        </div>
     </div>
 </div>
 </body>
